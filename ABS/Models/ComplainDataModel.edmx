@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="csContactUs">
+          <Key>
+            <PropertyRef Name="ContactUsID" />
+          </Key>
+          <Property Name="ContactUsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="ContactUsTypeID" Type="int" />
+          <Property Name="ContactUsStatusID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="LastAction" Type="nvarchar(max)" />
+          <Property Name="IsClosed" Type="bit" />
+          <Property Name="TransDate" Type="datetime" />
+          <Property Name="AWB" Type="nvarchar" MaxLength="20" />
+          <Property Name="SessionID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Ref" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="csContactUsActions">
+          <Key>
+            <PropertyRef Name="ContactUsActionID" />
+          </Key>
+          <Property Name="ContactUsActionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactUsID" Type="int" />
+          <Property Name="ContactUsStatusID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="IsClosed" Type="bit" />
+          <Property Name="ActionDate" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="csContactUsStatuses">
+          <Key>
+            <PropertyRef Name="ContactUsStatusID" />
+          </Key>
+          <Property Name="ContactUsStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="4" />
+          <Property Name="fName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fNameA" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="csContactUsTypes">
+          <Key>
+            <PropertyRef Name="ContactUsTypeID" />
+          </Key>
+          <Property Name="ContactUsTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="4" />
+          <Property Name="fName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fNameA" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="csContactUs" EntityType="Self.csContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csContactUsActions" EntityType="Self.csContactUsActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csContactUsStatuses" EntityType="Self.csContactUsStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="csContactUsTypes" EntityType="Self.csContactUsTypes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="csContactU">
+          <Key>
+            <PropertyRef Name="ContactUsID" />
+          </Key>
+          <Property Name="ContactUsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="ContactUsTypeID" Type="Int32" />
+          <Property Name="ContactUsStatusID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastAction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsClosed" Type="Boolean" />
+          <Property Name="TransDate" Type="DateTime" Precision="3" />
+          <Property Name="AWB" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SessionID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Ref" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="csContactUsAction">
+          <Key>
+            <PropertyRef Name="ContactUsActionID" />
+          </Key>
+          <Property Name="ContactUsActionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactUsID" Type="Int32" />
+          <Property Name="ContactUsStatusID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="IsClosed" Type="Boolean" />
+          <Property Name="ActionDate" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="csContactUsStatus">
+          <Key>
+            <PropertyRef Name="ContactUsStatusID" />
+          </Key>
+          <Property Name="ContactUsStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fNameA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="csContactUsType">
+          <Key>
+            <PropertyRef Name="ContactUsTypeID" />
+          </Key>
+          <Property Name="ContactUsTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="fName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fNameA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ComplainDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="csContactUs" EntityType="Self.csContactU" />
+          <EntitySet Name="csContactUsActions" EntityType="Self.csContactUsAction" />
+          <EntitySet Name="csContactUsStatuses" EntityType="Self.csContactUsStatus" />
+          <EntitySet Name="csContactUsTypes" EntityType="Self.csContactUsType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="ComplainDBContext">
+          <EntitySetMapping Name="csContactUs">
+            <EntityTypeMapping TypeName="Models.csContactU">
+              <MappingFragment StoreEntitySet="csContactUs">
+                <ScalarProperty Name="ContactUsID" ColumnName="ContactUsID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="ContactUsTypeID" ColumnName="ContactUsTypeID" />
+                <ScalarProperty Name="ContactUsStatusID" ColumnName="ContactUsStatusID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="LastAction" ColumnName="LastAction" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="AWB" ColumnName="AWB" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csContactUsActions">
+            <EntityTypeMapping TypeName="Models.csContactUsAction">
+              <MappingFragment StoreEntitySet="csContactUsActions">
+                <ScalarProperty Name="ContactUsActionID" ColumnName="ContactUsActionID" />
+                <ScalarProperty Name="ContactUsID" ColumnName="ContactUsID" />
+                <ScalarProperty Name="ContactUsStatusID" ColumnName="ContactUsStatusID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csContactUsStatuses">
+            <EntityTypeMapping TypeName="Models.csContactUsStatus">
+              <MappingFragment StoreEntitySet="csContactUsStatuses">
+                <ScalarProperty Name="ContactUsStatusID" ColumnName="ContactUsStatusID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="fNameA" ColumnName="fNameA" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="csContactUsTypes">
+            <EntityTypeMapping TypeName="Models.csContactUsType">
+              <MappingFragment StoreEntitySet="csContactUsTypes">
+                <ScalarProperty Name="ContactUsTypeID" ColumnName="ContactUsTypeID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="fNameA" ColumnName="fNameA" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

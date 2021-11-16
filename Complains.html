@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ABS Complains</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                $.ajax({
+                    type: 'Get',
+                    url: '/api/complain',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+
+                        data.forEach(function (dt) {
+                            $("#tdata").append("<tr>" +
+                                "<td>" + dt.Ref + "</td>" +
+                                "<td>" + dt.ComplainDate + "</td>" +
+                                "<td>" + dt.ComplainType + "</td>" +
+                                "<td>" + dt.Complain + "</td>" +
+                                "<td>" + dt.Reply + "</td>" +
+                                "<td>" + dt.Ad_User + "</td>" +
+                                "<td>" + dt.Ad_Date + "</td>" +
+                                "<td>" + dt.ResponseDate + "</td>" +
+                                +"</tr>"
+                            );
+                        });
+                    }
+            });
+        });
+
+        function search() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tbl");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+
+    <input style="border: 2px solid darkblue; background-image: url('/searchicon.png'); background-position: 10px 12px; background-repeat: no-repeat; width: 100%; font-size: 16px; padding: 12px 20px 12px 40px; margin-bottom: 12px; margin-top: 12px; " type="text" id="myInput" onkeyup="search()" placeholder="Search for Ref..">
+
+    <table id="tbl" class="table table-bordered">
+        <thead style="background-color:orange;">
+            <tr style="color:darkblue;">
+                <th>Ref</th>
+                <th>Complain Date</th>
+                <th>Complain Type</th>
+                <th>Complain</th>
+                <th>Response</th>
+                <th>Ad_User</th>
+                <th>Ad_Date</th>
+                <th>Response Date</th>
+            </tr>
+        </thead>
+        <tbody id="tdata">
+        </tbody>
+    </table>
+    <!--<div style=" height: 200px; position: relative;">
+        <div style=" margin: 10px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+            <button class="btn btn-primary" id="btn">Get</button>
+        </div>
+    </div>-->
+
+
+</body>
+</html>
